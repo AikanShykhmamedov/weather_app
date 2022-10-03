@@ -69,12 +69,15 @@ void main() {
     test('Always -> Denied', () async {
       when(() => locationApi.checkPermission())
           .thenAnswer((_) async => LocationPermission.denied);
+      when(() => locationApi.requestPermission())
+          .thenAnswer((_) async => LocationPermission.denied);
 
       await location.updatePermission();
 
       expect(location.isPermissionGranted, isFalse);
 
       verify(() => locationApi.checkPermission()).called(1);
+      verify(() => locationApi.requestPermission()).called(1);
     });
   });
 
