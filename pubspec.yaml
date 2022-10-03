@@ -1,0 +1,83 @@
+name: weather_app
+description: A stunning Weather App
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  async: ^2.8.2
+  custom_refresh_indicator: ^1.2.1
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  freezed_annotation: ^2.1.0
+  http: ^0.13.4
+  intl: ^0.17.0
+  location_api:
+    path: packages/location_api
+  provider: ^6.0.3
+  rive: ^0.9.1
+  shared_preferences: ^2.0.15
+  timezone: ^0.8.0
+  weather_api:
+    path: packages/weather_api
+
+dev_dependencies:
+  build_runner: ^2.2.0
+  flutter_launcher_icons: ^0.10.0
+  flutter_lints: ^2.0.1
+  flutter_native_splash: ^2.2.8
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.1.0+1
+  mocktail: ^0.3.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/rive/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+
+flutter_intl:
+  enabled: true
+  arb_dir: lib/localization/l10n
+  output_dir: lib/localization/generated
+
+flutter_icons:
+  image_path: assets/app_icon/app_icon.png
+  # On iOS creates icons pack with the same prefix "Icon-App".
+  # Probably therefore the icons are not sorted properly in XCode.
+  # Therefore, do not generate icons for iOS without need.
+  ios: false
+  remove_alpha_ios: true
+  android: true
+  adaptive_icon_background: "#BFE6FC"
+  adaptive_icon_foreground: assets/app_icon/app_icon_foreground.png
+  min_sdk_android: 16
+
+
+# TODO: On Android 12 and newer splash_image jumps to the top
+flutter_native_splash:
+  color: "#BFE6FC"
+  image: assets/splash/splash_image.png
+
+  android_12:
+    color: "#BFE6FC"
+    image: assets/splash/splash_image_android_12.png

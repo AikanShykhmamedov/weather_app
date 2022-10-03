@@ -1,0 +1,34 @@
+{
+  "weather_type": "{type, select, clear {Clear} fewClouds {Few clouds} clouds {Clouds} rain {Rain} heavyRain {Heavy rain} snow {Snow} thunderstorm {Thunderstorm} other { }}",
+
+  "temperature_measure": "{type, select, celsius {°C} fahrenheit {°F} other { }}",
+
+  "wind": "Wind",
+  "wind_measure": "{type, select, kmPerH {km/h} mPerS {m/s} other { }}",
+
+  "pressure": "Pressure",
+  "pressure_measure": "{type, select, hPa {hPa} mmHg {mmHg} other { }}",
+
+  "sunrise": "Sunrise",
+  "sunset": "Sunset",
+
+  "settings": "Settings",
+
+  "favorites": "Favorites",
+
+  "city_search_title": "Search city",
+  "city_search_hint": "Enter city",
+  "city_search_could_not_find": "Could not find anything :(",
+
+  "error_occurred": "An error occurred",
+
+  "drawer_add_cities": "Press + to add new cities",
+
+  "permission_not_granted_title": "Permission is not granted",
+  "permission_not_granted_content": "Grant location permission to see the weather in your area",
+
+  "location_service_unavailable_title": "Location service is turned off",
+  "location_service_unavailable_content": "Turn on location service to see the weather in your area",
+
+  "turn_on_location": "Turn on location"
+}
