@@ -51,6 +51,9 @@ class Location extends ChangeNotifier {
   Future<void> updatePermission() async {
     var permission = await _locationApi.checkPermission();
 
+    // Android does not return `LocationPermission.deniedForever`. In order to
+    // workaround this we call the `requestPermission` method that in its turn
+    // may return `LocationPermission.deniedForever`.
     if (permission == LocationPermission.denied) {
       permission = await _locationApi.requestPermission();
     }
