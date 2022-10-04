@@ -1,6 +1,6 @@
-# Weather App
+# Weather
 
-A stunning Weather App for Android and iOS made with **Flutter** and inspired by a Zuza Wasiak's [work](https://www.behance.net/gallery/142790175/Weather-app-progressive-web-app).
+A stunning Weather app for Android and iOS made with **Flutter** and inspired by a Zuza Wasiak's [work](https://www.behance.net/gallery/142790175/Weather-app-progressive-web-app).
 
 ![Home screen](assets/readme/home_screen.gif)
 ![Drawer](assets/readme/drawer.gif)
