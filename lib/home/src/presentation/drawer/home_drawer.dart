@@ -26,6 +26,8 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final paddingTop = MediaQuery.of(context).padding.top;
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+
     final width = MediaQuery.of(context).size.width;
 
     final settingsHeader = SliverToBoxAdapter(
@@ -95,7 +97,7 @@ class HomeDrawer extends StatelessWidget {
               sliver: favoriteHeader,
             ),
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 16),
+              padding: EdgeInsets.fromLTRB(8, 0, 8, 16 + bottomPadding),
               sliver: favorites,
             ),
           ],
