@@ -46,11 +46,22 @@ class _PersistentSearchState extends State<PersistentSearch> {
   late final TextEditingController _controller;
   late final ValueNotifier<bool> _showClear;
 
+  var _inputText = '';
+
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+
+    _controller = TextEditingController(text: _inputText);
     _showClear = ValueNotifier<bool>(false);
+
+    _controller.addListener(() {
+      if (_inputText != _controller.text) {
+        _inputText = _controller.text;
+        _showClear.value = _inputText.isNotEmpty;
+        widget.onTextChanged(_inputText);
+      }
+    });
   }
 
   @override
@@ -66,7 +77,7 @@ class _PersistentSearchState extends State<PersistentSearch> {
       valueListenable: _showClear,
       builder: (_, show, __) => show
           ? IconButton(
-              onPressed: _onClearPressed,
+              onPressed: _controller.clear,
               icon: const Icon(Icons.cancel_rounded),
             )
           : const SizedBox.shrink(),
@@ -92,7 +103,6 @@ class _PersistentSearchState extends State<PersistentSearch> {
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
                 textAlignVertical: TextAlignVertical.center,
-                onChanged: _onChanged,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                   border: InputBorder.none,
@@ -113,17 +123,6 @@ class _PersistentSearchState extends State<PersistentSearch> {
         child: child,
       ),
     );
-  }
-
-  void _onClearPressed() {
-    _showClear.value = false;
-    _controller.clear();
-    widget.onTextChanged('');
-  }
-
-  void _onChanged(String text) {
-    _showClear.value = text.isNotEmpty;
-    widget.onTextChanged(text);
   }
 }
 
