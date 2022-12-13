@@ -6,14 +6,14 @@ void main() {
     final sunrise = Time(hours: 6, minutes: 15);
     final sunset = Time(hours: 20, minutes: 45);
 
-    void _testFor(DateTime now, bool matcher) {
+    void testFor(DateTime now, bool matcher) {
       final isDay = Utils.isDay(sunrise, sunset, now);
       expect(isDay, matcher);
     }
 
-    test('4:00', () => _testFor(Time(hours: 4, minutes: 0), false));
-    test('12:00', () => _testFor(Time(hours: 12, minutes: 0), true));
-    test('22:00', () => _testFor(Time(hours: 22, minutes: 0), false));
+    test('4:00', () => testFor(Time(hours: 4, minutes: 0), false));
+    test('12:00', () => testFor(Time(hours: 12, minutes: 0), true));
+    test('22:00', () => testFor(Time(hours: 22, minutes: 0), false));
   });
 }
 
