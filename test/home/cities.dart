@@ -20,6 +20,15 @@ final london = CityWeather(
   pressure: 1020,
 );
 
+const londonLocation = Location(
+  'London',
+  'London',
+  'Great Britain',
+  51.52,
+  -0.11,
+  'Europe/London',
+);
+
 final paris = CityWeather(
   latitude: 48.87,
   longitude: 2.33,
