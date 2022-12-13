@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_api/weather_api.dart';
+import 'package:weather_app/city_search/src/presentation/widgets/search_result_sliver.dart';
 import 'package:weather_app/localization/generated/l10n.dart';
 
 import '../models/city_search_result.dart';
@@ -42,8 +43,6 @@ class _CitySearchViewState extends State<_CitySearchView> {
 
   @override
   Widget build(BuildContext context) {
-    final bottomPadding = MediaQuery.of(context).padding.bottom;
-
     final appBar = PersistentAppBar(
       largeTitle: Text(
         S.of(context).city_search_title,
@@ -62,76 +61,10 @@ class _CitySearchViewState extends State<_CitySearchView> {
     );
 
     final content = Consumer<SearchAutocomplete>(
-      builder: (context, autocomplete, _) {
-        return autocomplete.state.when<Widget>(
-          initial: () => const SliverFillRemaining(hasScrollBody: false),
-          loading: () => const SliverFillRemaining(
-            hasScrollBody: false,
-            child: Center(
-              child: SizedBox.square(
-                dimension: 24,
-                child: CircularProgressIndicator(
-                  strokeWidth: 3,
-                ),
-              ),
-            ),
-          ),
-          error: () => SliverFillRemaining(
-            hasScrollBody: false,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(32),
-                child: Text(
-                  S.of(context).city_search_could_not_find,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.labelLarge!,
-                ),
-              ),
-            ),
-          ),
-          success: (cities) {
-            if (cities.isEmpty) {
-              return SliverFillRemaining(
-                hasScrollBody: false,
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(32),
-                    child: Text(
-                      S.of(context).city_search_could_not_find,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.labelLarge!,
-                    ),
-                  ),
-                ),
-              );
-            }
-
-            return SliverPadding(
-              padding: EdgeInsets.only(bottom: bottomPadding),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: cities.length,
-                  (context, index) {
-                    final city = cities[index];
-
-                    return ListTile(
-                      onTap: () => _onCityPressed(context, city),
-                      leading: const Icon(Icons.place_outlined),
-                      minVerticalPadding: 12,
-                      minLeadingWidth: 24,
-                      title: Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Text(city.name),
-                      ),
-                      subtitle: Text('${city.country}, ${city.region}'),
-                    );
-                  },
-                ),
-              ),
-            );
-          },
-        );
-      },
+      builder: (context, autocomplete, _) => SearchResultSliver(
+        state: autocomplete.state,
+        onCityPressed: (city) => _onCityPressed(context, city),
+      ),
     );
 
     return Scaffold(

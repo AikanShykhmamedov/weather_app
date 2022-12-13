@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/app/app_constants.dart';
 import 'package:weather_app/home/src/models/weather_measure.dart';
+import 'package:weather_app/home/src/presentation/widgets/local_area_page.dart';
 import 'package:weather_app/localization/generated/l10n.dart';
 
 import '../constants/weather_animation_artboards.dart';
@@ -14,7 +15,6 @@ import '../repositories/favorite_cities_repository.dart';
 import '../repositories/local_city_repository.dart';
 import 'drawer/home_drawer.dart';
 import 'widgets/circular_refresh_indicator.dart';
-import 'widgets/location_unavailable.dart';
 import 'widgets/weather_animation.dart';
 import 'widgets/weather_details.dart';
 import 'widgets/weather_header.dart';
@@ -196,40 +196,14 @@ class _HomeViewState extends State<_HomeView> {
                       itemBuilder: (context, i) {
                         if (i == 0) {
                           return Consumer<Location>(
-                            builder: (context, location, _) {
-                              if (!location.isServiceEnabled) {
-                                return LocationServiceUnavailable(
-                                  openSettings: location.openLocationSettings,
-                                );
-                              } else if (!location.isPermissionGranted) {
-                                return PermissionNotGranted(
-                                  openAppSettings: location.openAppSettings,
-                                );
-                              }
-
-                              if (state.localCity == null) {
-                                // TODO: What if we can't load the local city
-                                // due to connection problems. Then indicator
-                                // will run forever. Maybe we need to show some
-                                // error message in that case.
-                                return const Center(
-                                  child: SizedBox.square(
-                                    dimension: 32,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 3.0,
-                                    ),
-                                  ),
-                                );
-                              }
-
-                              final artboard =
-                                  WeatherAnimationArtboards.resolve(
-                                      state.localCity!);
-
-                              return WeatherAnimation(
-                                artboard: artboard,
-                              );
-                            },
+                            builder: (context, location, _) => LocalAreaPage(
+                              isServiceEnabled: location.isServiceEnabled,
+                              isPermissionGranted: location.isPermissionGranted,
+                              openLocationSettings:
+                                  location.openLocationSettings,
+                              openAppSettings: location.openAppSettings,
+                              city: state.localCity,
+                            ),
                           );
                         }
 
