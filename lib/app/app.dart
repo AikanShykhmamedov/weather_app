@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:location_api/location_api.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:weather_app/city_search/city_search.dart';
@@ -14,7 +15,12 @@ import 'app_routes.dart';
 import 'app_theme.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({
+    super.key,
+    this.locationApi,
+  });
+
+  final LocationApi? locationApi;
 
   /// Initializes some packages used in this app.
   static void setup() {
@@ -30,7 +36,8 @@ class App extends StatelessWidget {
           create: (_) => FavoriteCitiesRepository(),
         ),
         ChangeNotifierProvider<DynamicTheme>(create: (_) => DynamicTheme()),
-        ChangeNotifierProvider<Location>(create: (_) => Location()),
+        ChangeNotifierProvider<Location>(
+            create: (_) => Location(locationApi: locationApi)),
         ChangeNotifierProvider<Preferences>(create: (_) => Preferences()),
       ],
       child: Selector<DynamicTheme, DynamicThemeData>(
