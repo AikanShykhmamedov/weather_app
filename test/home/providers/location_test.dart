@@ -10,7 +10,7 @@ class MockLocationApi extends Mock implements LocationApi {}
 void main() {
   final locationApi = MockLocationApi();
 
-  late Location location = Location(locationApi: locationApi);
+  late Location location;
 
   setUp(() {
     location = Location(locationApi: locationApi);
