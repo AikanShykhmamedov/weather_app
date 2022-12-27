@@ -1,5 +1,7 @@
 [<img src="assets/readme/google_play_badge.png" height="80">](https://play.google.com/store/apps/details?id=dev.aykhan.weather_app)
 
+\* Google Play does not open in browsers in Russia. Open the link on an Android device.
+
 # Weather
 
 A stunning Weather app for Android and iOS made with **Flutter** and inspired by a Zuza Wasiak's [work](https://www.behance.net/gallery/142790175/Weather-app-progressive-web-app).
