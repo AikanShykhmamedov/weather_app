@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 class PermissionNotGranted extends StatelessWidget {
   const PermissionNotGranted({

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 /// {@template PersistentSearch}
 /// A TextField that stays at the top of CustomScrollView.

@@ -3,9 +3,9 @@ import 'dart:collection';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:weather_api/weather_api.dart';
 import 'package:weather_app/app/app_config.dart';
-import 'package:weather_app/home/src/repositories/favorite_cities_storage.dart';
 
 import '../models/city_weather.dart';
+import 'favorite_cities_storage.dart';
 
 /// {@template favorite_cities_repository}
 /// A repository responsible for managing favorite cities.

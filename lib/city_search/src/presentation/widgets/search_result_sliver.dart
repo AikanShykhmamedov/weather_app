@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_api/weather_api.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../../providers/search_autocomplete.dart';
 

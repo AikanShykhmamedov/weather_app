@@ -59,8 +59,8 @@ flutter:
 
 flutter_intl:
   enabled: true
-  arb_dir: lib/localization/l10n
-  output_dir: lib/localization/generated
+  arb_dir: lib/localization/src/l10n
+  output_dir: lib/localization/src/generated
 
 flutter_icons:
   image_path: assets/app_icon/app_icon.png

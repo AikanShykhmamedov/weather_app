@@ -4,7 +4,7 @@ import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:weather_app/home/src/models/weather_measure.dart';
 import 'package:weather_app/home/src/presentation/drawer/widgets/dismissible_city_item.dart';
 import 'package:weather_app/home/src/presentation/drawer/widgets/favorites_sliver.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../../app_mock.dart';
 import '../cities.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/home/src/models/city_weather.dart';
 
 import '../constants/weather_colors.dart';
 import '../utils.dart';
+import 'city_weather.dart';
 
 /// {@template dynamic_theme_data}
 /// A class containing theme specifications.

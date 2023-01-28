@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/app/app_constants.dart';
-import 'package:weather_app/home/src/models/weather_measure.dart';
-import 'package:weather_app/home/src/presentation/widgets/local_area_page.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../constants/weather_animation_artboards.dart';
 import '../models/city_weather.dart';
+import '../models/weather_measure.dart';
 import '../providers/dynamic_theme.dart';
 import '../providers/location.dart';
 import '../providers/preferences.dart';
@@ -15,6 +14,7 @@ import '../repositories/favorite_cities_repository.dart';
 import '../repositories/local_city_repository.dart';
 import 'drawer/home_drawer.dart';
 import 'widgets/circular_refresh_indicator.dart';
+import 'widgets/local_area_page.dart';
 import 'widgets/weather_animation.dart';
 import 'widgets/weather_details.dart';
 import 'widgets/weather_header.dart';

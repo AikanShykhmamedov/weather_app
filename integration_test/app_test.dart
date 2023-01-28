@@ -4,7 +4,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:location_api/location_api.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:weather_app/home/src/presentation/drawer/widgets/dismissible_city_item.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 import 'package:weather_app/main.dart' as app;
 
 class LocationApiMock extends Mock implements LocationApi {}

@@ -16,8 +16,9 @@ class SearchAutocompleteState with _$SearchAutocompleteState {
 
   const factory SearchAutocompleteState.error() = SearchAutocompleteError;
 
-  const factory SearchAutocompleteState.success(
-      {required List<Location> cities}) = SearchAutocompleteSuccess;
+  const factory SearchAutocompleteState.success({
+    required List<Location> cities,
+  }) = SearchAutocompleteSuccess;
 }
 
 /// {@template city_autocomplete}

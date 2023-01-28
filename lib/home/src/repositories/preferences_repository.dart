@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:weather_app/home/src/repositories/preferences_storage.dart';
-
 import '../models/weather_measure.dart';
+import 'preferences_storage.dart';
 
 /// {@template preferences_repository}
 /// A repository responsible for managing user preferences.

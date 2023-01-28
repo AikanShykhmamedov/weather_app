@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:weather_app/city_search/city_search.dart';
 import 'package:weather_app/home/home.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 import 'package:weather_app/splash/splash.dart';
 
 import 'app_routes.dart';
@@ -37,7 +37,8 @@ class App extends StatelessWidget {
         ),
         ChangeNotifierProvider<DynamicTheme>(create: (_) => DynamicTheme()),
         ChangeNotifierProvider<Location>(
-            create: (_) => Location(locationApi: locationApi)),
+          create: (_) => Location(locationApi: locationApi),
+        ),
         ChangeNotifierProvider<Preferences>(create: (_) => Preferences()),
       ],
       child: Selector<DynamicTheme, DynamicThemeData>(

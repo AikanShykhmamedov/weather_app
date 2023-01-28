@@ -1,5 +1,4 @@
-import 'package:weather_app/home/src/models/city_weather.dart';
-
+import '../models/city_weather.dart';
 import '../utils.dart';
 
 /// All artboards contained in the corresponding rive file.

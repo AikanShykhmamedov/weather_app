@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weather_app/home/src/models/city_weather.dart';
+
+import '../models/city_weather.dart';
 
 /// {@template local_city_storage}
 /// Manages a local city in SharedPreferences store.

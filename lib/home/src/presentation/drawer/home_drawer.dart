@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/app/app_routes.dart';
 import 'package:weather_app/city_search/city_search.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../../models/city_weather.dart';
 import '../../providers/preferences.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:weather_app/home/src/presentation/widgets/local_area_page.dart';
 import 'package:weather_app/home/src/presentation/widgets/weather_animation.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../../app_mock.dart';
 import '../cities.dart';

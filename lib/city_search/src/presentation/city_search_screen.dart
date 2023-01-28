@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_api/weather_api.dart';
-import 'package:weather_app/city_search/src/presentation/widgets/search_result_sliver.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../models/city_search_result.dart';
 import '../providers/search_autocomplete.dart';
 import 'widgets/persistent_app_bar.dart';
 import 'widgets/persistent_search.dart';
+import 'widgets/search_result_sliver.dart';
 
 /// {@template city_search_screen}
 /// A screen that provides search to find a city with autocompletion.

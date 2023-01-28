@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:weather_app/city_search/src/presentation/widgets/search_result_sliver.dart';
 import 'package:weather_app/city_search/src/providers/search_autocomplete.dart';
-import 'package:weather_app/localization/generated/l10n.dart';
+import 'package:weather_app/localization/localization.dart';
 
 import '../../app_mock.dart';
 import '../../home/cities.dart';
