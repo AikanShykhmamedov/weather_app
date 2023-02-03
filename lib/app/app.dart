@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location_api/location_api.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:weather_app/about/about.dart';
 import 'package:weather_app/city_search/city_search.dart';
 import 'package:weather_app/home/home.dart';
 import 'package:weather_app/localization/localization.dart';
@@ -71,6 +72,11 @@ class App extends StatelessWidget {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case AppRoutes.about:
+        return MaterialPageRoute<CitySearchResult>(
+          builder: (_) => const AboutScreen(),
+          fullscreenDialog: true,
+        );
       case AppRoutes.citySearch:
         return MaterialPageRoute<CitySearchResult>(
           builder: (_) => const CitySearchScreen(),

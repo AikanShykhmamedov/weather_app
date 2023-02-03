@@ -165,6 +165,26 @@ class S {
     );
   }
 
+  /// `About`
+  String get about {
+    return Intl.message(
+      'About',
+      name: 'about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get about_privacy_policy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'about_privacy_policy',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Favorites`
   String get favorites {
     return Intl.message(

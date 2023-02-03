@@ -31,9 +31,20 @@ class HomeDrawer extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     final settingsHeader = SliverToBoxAdapter(
-      child: Text(
-        S.of(context).settings.toUpperCase(),
-        style: Theme.of(context).textTheme.titleMedium!,
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              S.of(context).settings.toUpperCase(),
+              style: Theme.of(context).textTheme.titleMedium!,
+            ),
+          ),
+          const SizedBox(width: 16),
+          IconButton(
+            onPressed: () => _onAboutPressed(context),
+            icon: const Icon(Icons.info),
+          ),
+        ],
       ),
     );
 
@@ -85,7 +96,7 @@ class HomeDrawer extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(16, paddingTop + 24, 16, 16),
+              padding: EdgeInsets.fromLTRB(16, paddingTop + 24, 8, 16),
               sliver: settingsHeader,
             ),
             SliverPadding(
@@ -104,6 +115,10 @@ class HomeDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onAboutPressed(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.about);
   }
 
   void _onAddFavoriteCityPressed(BuildContext context) async {
