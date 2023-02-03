@@ -21,7 +21,7 @@ dependencies:
   location_api:
     path: packages/location_api
   provider: ^6.0.3
-  rive: ^0.9.1
+  rive: ^0.10.1
   shared_preferences: ^2.0.15
   timezone: ^0.8.0
   weather_api:
