@@ -32,11 +32,12 @@ class WeatherHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cityNameTextStyle = Theme.of(context).textTheme.headlineMedium!;
+    final weatherTypeTextStyle = Theme.of(context).textTheme.titleMedium!;
+
     Widget buildPlaceholder() {
-      final cityNameHeight =
-          Utils.computeTextHeight(Theme.of(context).textTheme.headlineLarge!);
-      final weatherTypeHeight =
-          Utils.computeTextHeight(Theme.of(context).textTheme.titleMedium!);
+      final cityNameHeight = Utils.computeTextHeight(cityNameTextStyle);
+      final weatherTypeHeight = Utils.computeTextHeight(weatherTypeTextStyle);
 
       return SizedBox(
         height: cityNameHeight + verticalSpacing + weatherTypeHeight,
@@ -46,12 +47,12 @@ class WeatherHeader extends StatelessWidget {
     Widget buildHeader() {
       final cityName = Text(
         _cityName!,
-        style: Theme.of(context).textTheme.headlineLarge!,
+        style: cityNameTextStyle,
       );
 
       final weatherType = Text(
         S.of(context).weather_type(_weatherType!).toLowerCase(),
-        style: Theme.of(context).textTheme.titleMedium!,
+        style: weatherTypeTextStyle,
       );
 
       return ScaleFadeAnimatedSwitcher(

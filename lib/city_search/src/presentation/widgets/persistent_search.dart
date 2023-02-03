@@ -12,7 +12,7 @@ class PersistentSearch extends StatefulWidget {
     required this.onTextChanged,
     this.autofocus = true,
     this.textFieldHeight = 52.0,
-    this.textFieldPadding = const EdgeInsets.fromLTRB(12, 12, 12, 8),
+    this.textFieldPadding = const EdgeInsets.all(12),
   });
 
   /// Triggers when text is changed.
@@ -83,44 +83,33 @@ class _PersistentSearchState extends State<PersistentSearch> {
           : const SizedBox.shrink(),
     );
 
-    final child = ColoredBox(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Padding(
-        padding: widget.textFieldPadding,
-        child: ConstrainedBox(
-          constraints: BoxConstraints.expand(
-            height: widget.textFieldHeight,
-          ),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onBackground,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(
-              child: TextField(
-                controller: _controller,
-                autofocus: widget.autofocus,
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.done,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                  border: InputBorder.none,
-                  hintText: S.of(context).city_search_hint,
-                  suffixIcon: clearButton,
-                ),
-              ),
-            ),
-          ),
-        ),
+    final textField = TextField(
+      controller: _controller,
+      autofocus: widget.autofocus,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      textAlignVertical: TextAlignVertical.center,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        border: InputBorder.none,
+        hintText: S.of(context).city_search_hint,
+        suffixIcon: clearButton,
       ),
     );
+
+    final theme = Theme.of(context);
 
     return SliverPersistentHeader(
       pinned: true,
       delegate: _PersistentSearchDelegate(
         height: widget.textFieldHeight + widget.textFieldPadding.vertical,
-        child: child,
+        textFieldHeight: widget.textFieldHeight,
+        textFieldPadding: widget.textFieldPadding,
+        textField: textField,
+        appBarBackground: theme.appBarTheme.backgroundColor!,
+        textFieldBackground: theme.colorScheme.onBackground,
+        surfaceTint: theme.colorScheme.surfaceTint,
+        scrolledUnderElevation: theme.appBarTheme.scrolledUnderElevation!,
       ),
     );
   }
@@ -129,11 +118,23 @@ class _PersistentSearchState extends State<PersistentSearch> {
 class _PersistentSearchDelegate extends SliverPersistentHeaderDelegate {
   const _PersistentSearchDelegate({
     required this.height,
-    required this.child,
+    required this.textFieldHeight,
+    required this.textFieldPadding,
+    required this.textField,
+    required this.appBarBackground,
+    required this.textFieldBackground,
+    required this.surfaceTint,
+    required this.scrolledUnderElevation,
   });
 
   final double height;
-  final Widget child;
+  final double textFieldHeight;
+  final EdgeInsets textFieldPadding;
+  final Widget textField;
+  final Color appBarBackground;
+  final Color textFieldBackground;
+  final Color surfaceTint;
+  final double scrolledUnderElevation;
 
   @override
   double get minExtent => height;
@@ -142,10 +143,54 @@ class _PersistentSearchDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => height;
 
   @override
-  Widget build(_, __, ___) => child;
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    final elevation = overlapsContent ? scrolledUnderElevation : 0.0;
+    final backgroundColor = ElevationOverlay.applySurfaceTint(
+      appBarBackground,
+      surfaceTint,
+      elevation,
+    );
+    final textFieldBackgroundColor = ElevationOverlay.applySurfaceTint(
+      textFieldBackground,
+      surfaceTint,
+      elevation,
+    );
+
+    return ColoredBox(
+      color: backgroundColor,
+      child: Padding(
+        padding: textFieldPadding,
+        child: ConstrainedBox(
+          constraints: BoxConstraints.expand(
+            height: textFieldHeight,
+          ),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: textFieldBackgroundColor,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Center(
+              child: textField,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   bool shouldRebuild(covariant _PersistentSearchDelegate oldDelegate) {
-    return oldDelegate.height != height || oldDelegate.child != child;
+    return oldDelegate.height != height ||
+        oldDelegate.textFieldHeight != textFieldHeight ||
+        oldDelegate.textFieldPadding != textFieldPadding ||
+        oldDelegate.textField != textField ||
+        oldDelegate.appBarBackground != appBarBackground ||
+        oldDelegate.textFieldBackground != textFieldBackground ||
+        oldDelegate.surfaceTint != surfaceTint ||
+        oldDelegate.scrolledUnderElevation != scrolledUnderElevation;
   }
 }

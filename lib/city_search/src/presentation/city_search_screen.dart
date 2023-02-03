@@ -5,7 +5,6 @@ import 'package:weather_app/localization/localization.dart';
 
 import '../models/city_search_result.dart';
 import '../providers/search_autocomplete.dart';
-import 'widgets/persistent_app_bar.dart';
 import 'widgets/persistent_search.dart';
 import 'widgets/search_result_sliver.dart';
 
@@ -43,16 +42,8 @@ class _CitySearchViewState extends State<_CitySearchView> {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = PersistentAppBar(
-      largeTitle: Text(
-        S.of(context).city_search_title,
-        style: Theme.of(context).textTheme.headlineLarge!,
-      ),
-      // TODO: No ripple effect
-      leading: IconButton(
-        onPressed: () => _onBackPressed(context),
-        icon: const Icon(Icons.close_rounded),
-      ),
+    final appBar = SliverAppBar.large(
+      title: Text(S.of(context).city_search_title),
     );
 
     final search = PersistentSearch(
@@ -69,7 +60,6 @@ class _CitySearchViewState extends State<_CitySearchView> {
 
     return Scaffold(
       body: CustomScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
           appBar,
           search,
@@ -100,10 +90,6 @@ class _CitySearchViewState extends State<_CitySearchView> {
         );
       },
     );
-  }
-
-  void _onBackPressed(BuildContext context) {
-    Navigator.pop(context);
   }
 
   void _onCityPressed(BuildContext context, Location location) {

@@ -37,10 +37,14 @@ ThemeData resolveAppTheme(DynamicThemeData data) {
   );
 
   return ThemeData(
+    useMaterial3: true,
     scaffoldBackgroundColor: data.background,
     highlightColor: data.onBackground.withOpacity(0.5),
-    splashColor: data.onBackground,
     colorScheme: colorScheme,
+    appBarTheme: AppBarTheme(
+      backgroundColor: data.background,
+      scrolledUnderElevation: 3.0,
+    ),
     drawerTheme: DrawerThemeData(
       backgroundColor: data.background,
     ),
@@ -81,7 +85,7 @@ TextTheme _getTextTheme(Color primary, Color secondary) {
       fontWeight: FontWeight.w400,
       height: 1.15,
     ),
-    headlineLarge: TextStyle(
+    headlineMedium: TextStyle(
       color: primary,
       fontSize: 27,
       fontWeight: FontWeight.w700,
