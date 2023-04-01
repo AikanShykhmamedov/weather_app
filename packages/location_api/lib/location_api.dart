@@ -1,5 +1,3 @@
-library location_api;
-
 export 'package:geolocator/geolocator.dart' show LocationPermission;
 
 export 'src/location_api.dart';

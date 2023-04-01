@@ -1,5 +1,3 @@
-library weather_api;
-
 export 'src/models/forecast.dart';
 export 'src/models/location.dart';
 
