@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'models/location.dart';
 import 'models/forecast.dart';
+import 'models/location.dart';
 
 class WeatherApiException implements Exception {}
 
@@ -38,7 +38,7 @@ class WeatherApi {
 
     final data = jsonDecode(response.body);
 
-    return Forecast.fromJson(data);
+    return Forecast.fromJson(data as Map<String, dynamic>);
   }
 
   /// Fetches completion for the given `query`.

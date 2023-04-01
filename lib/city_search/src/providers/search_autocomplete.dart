@@ -37,7 +37,7 @@ class SearchAutocomplete extends ChangeNotifier {
   SearchAutocompleteState _state;
 
   Timer? _timer;
-  CancelableOperation? _operation;
+  CancelableOperation<void>? _operation;
 
   static const _delay = Duration(milliseconds: 500);
   static const _networkTimeout = Duration(seconds: 10);

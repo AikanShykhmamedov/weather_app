@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:weather_api/weather_api.dart';
-import 'package:weather_app/home/src/repositories/favorite_cities_repository.dart';
+import 'package:weather_app/home/home.dart';
 import 'package:weather_app/home/src/repositories/favorite_cities_storage.dart';
 
 import '../cities.dart';
@@ -90,7 +90,7 @@ void main() {
 
       await repository.remove(city);
 
-      expect(repository.cities, []);
+      expect(repository.cities, <CityWeather>[]);
 
       verify(() => storage.save([])).called(1);
     });

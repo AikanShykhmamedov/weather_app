@@ -45,7 +45,7 @@ class _WeatherPageIndicatorState extends State<WeatherPageIndicator> {
       children: List.generate(
         (1 + widget.favoriteCitiesCount) * 2 - 1,
         (index) {
-          if (index % 2 == 1) {
+          if (index.isOdd) {
             return const SizedBox(width: 6);
           }
 

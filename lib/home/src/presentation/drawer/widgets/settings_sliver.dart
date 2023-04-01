@@ -99,23 +99,23 @@ class _Toggle<T> extends StatelessWidget {
       child: Row(
         children: List.generate(
           max(0, values.length * 2 - 1),
-          (i) {
-            if (i % 2 == 1) {
+          (index) {
+            if (index.isOdd) {
               return const SizedBox(width: 16);
             }
 
-            i ~/= 2;
+            index ~/= 2;
 
             return Expanded(
               child: TextButton(
-                onPressed: () => _onItemPressed(values[i]),
+                onPressed: () => _onItemPressed(values[index]),
                 style: TextButton.styleFrom(
-                  backgroundColor: value == values[i]
+                  backgroundColor: value == values[index]
                       ? Theme.of(context).colorScheme.onBackground
                       : Theme.of(context).colorScheme.background,
                   animationDuration: AnimationDuration.standard,
                 ),
-                child: Text(labels[i]),
+                child: Text(labels[index]),
               ),
             );
           },

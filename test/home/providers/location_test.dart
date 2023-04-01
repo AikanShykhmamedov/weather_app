@@ -117,8 +117,10 @@ void main() {
 
     streamController.add(true);
 
-    await Future.delayed(Duration.zero);
+    await Future<void>.delayed(Duration.zero);
 
     expect(location.isServiceEnabled, isTrue);
+
+    streamController.close();
   });
 }

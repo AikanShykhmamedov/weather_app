@@ -1,6 +1,6 @@
+import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:http/http.dart' as http;
 import 'package:weather_api/src/models/current_weather.dart';
 import 'package:weather_api/src/models/forecast.dart';
 import 'package:weather_api/src/models/forecast_day.dart';

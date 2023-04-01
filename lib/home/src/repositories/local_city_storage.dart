@@ -22,7 +22,7 @@ class LocalCityStorage {
       return null;
     }
 
-    final decoded = jsonDecode(encoded);
+    final decoded = jsonDecode(encoded) as Map<String, dynamic>;
 
     return CityWeather.fromJson(decoded);
   }

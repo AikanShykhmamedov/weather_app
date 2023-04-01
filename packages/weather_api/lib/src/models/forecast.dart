@@ -25,10 +25,12 @@ class Forecast extends Equatable {
   final ForecastDay forecastDay;
 
   factory Forecast.fromJson(Map<String, dynamic> data) {
-    final location = Location.fromJson(data['location']);
-    final current = CurrentWeather.fromJson(data['current']);
-    final forecastDay =
-        ForecastDay.fromJson(data['forecast']['forecastday'][0]);
+    final location =
+        Location.fromJson(data['location'] as Map<String, dynamic>);
+    final current =
+        CurrentWeather.fromJson(data['current'] as Map<String, dynamic>);
+    final forecastDay = ForecastDay.fromJson(
+        data['forecast']['forecastday'][0] as Map<String, dynamic>);
 
     return Forecast(location, current, forecastDay);
   }

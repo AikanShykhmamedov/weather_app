@@ -3,6 +3,8 @@ import 'package:weather_app/home/home.dart';
 
 import 'app_colors.dart';
 
+// ignore_for_file: avoid_redundant_argument_values
+
 /// Creates [ThemeData] based on `data`.
 ThemeData resolveAppTheme(DynamicThemeData data) {
   final ColorScheme colorScheme;

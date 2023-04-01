@@ -222,7 +222,7 @@ class _HomeViewState extends State<_HomeView> {
                       favoriteCitiesCount: state.favoriteCities.length,
                     );
 
-                    final details = Selector<Preferences, Map>(
+                    final details = Selector<Preferences, Map<String, dynamic>>(
                       selector: (_, preferences) => {
                         'wind': preferences.windMeasure,
                         'pressure': preferences.pressureMeasure,
@@ -235,8 +235,9 @@ class _HomeViewState extends State<_HomeView> {
                                 sunset: cityWeather.sunset,
                                 wind: cityWeather.wind,
                                 pressure: cityWeather.pressure,
-                                windMeasure: measures['wind'],
-                                pressureMeasure: measures['pressure'],
+                                windMeasure: measures['wind'] as WindMeasure,
+                                pressureMeasure:
+                                    measures['pressure'] as PressureMeasure,
                               );
                       },
                     );

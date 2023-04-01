@@ -281,6 +281,6 @@ class CityWeather {
   ) {
     final k = (y2 - y1) / (x2 - x1);
 
-    return (int x) => k * (x - x1) + y1;
+    return (x) => k * (x - x1) + y1;
   }
 }

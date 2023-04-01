@@ -22,8 +22,8 @@ class ForecastDay extends Equatable {
     final astro = json['astro'] as Map;
 
     final dateFormat = DateFormat('hh:mm aa');
-    final sunrise = dateFormat.parse(astro['sunrise'], true);
-    final sunset = dateFormat.parse(astro['sunset'], true);
+    final sunrise = dateFormat.parse(astro['sunrise'] as String, true);
+    final sunset = dateFormat.parse(astro['sunset'] as String, true);
 
     final hour = json['hour'] as List;
     final hourlyTemperature =

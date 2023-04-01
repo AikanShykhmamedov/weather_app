@@ -14,7 +14,7 @@ class CircularRefreshIndicator extends StatefulWidget {
     this.indicatorVerticalPadding = 16,
   });
 
-  final Future Function() onRefresh;
+  final Future<void> Function() onRefresh;
   final Widget child;
   final double indicatorSize;
   final double indicatorVerticalPadding;
@@ -62,7 +62,7 @@ class _CircularRefreshIndicatorState extends State<CircularRefreshIndicator> {
         final translatedIndicator = AnimatedBuilder(
           animation: controller,
           builder: (context, _) {
-            final value = controller.value.clamp(0.0, 1.0).toDouble();
+            final value = controller.value.clamp(0.0, 1.0);
 
             return Transform.translate(
               offset: Offset(

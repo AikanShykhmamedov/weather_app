@@ -5,6 +5,7 @@ import 'package:weather_app/city_search/city_search.dart';
 import 'package:weather_app/localization/localization.dart';
 
 import '../../models/city_weather.dart';
+import '../../models/weather_measure.dart';
 import '../../providers/preferences.dart';
 import '../../providers/weather.dart';
 import 'widgets/favorites_sliver.dart';
@@ -77,14 +78,15 @@ class HomeDrawer extends StatelessWidget {
       ),
     );
 
-    final favorites = Selector2<Weather, Preferences, Map>(
+    final favorites = Selector2<Weather, Preferences, Map<String, dynamic>>(
       selector: (_, weather, preferences) => {
         'favorite_cities': weather.state.favoriteCities,
         'temperature_measure': preferences.temperatureMeasure,
       },
       builder: (context, selected, _) => FavoritesSliver(
-        favoriteCities: selected['favorite_cities'],
-        temperatureMeasure: selected['temperature_measure'],
+        favoriteCities: selected['favorite_cities'] as List<CityWeather>,
+        temperatureMeasure:
+            selected['temperature_measure'] as TemperatureMeasure,
         onCityPressed: (id) => _onFavoriteCityPressed(context, id),
         onCityRemoved: (city) => _onFavoriteCityRemoved(context, city),
       ),
@@ -126,6 +128,7 @@ class HomeDrawer extends StatelessWidget {
         context, AppRoutes.citySearch);
 
     if (result != null) {
+      // ignore: use_build_context_synchronously
       context.read<Weather>().addFavorite(result.latitude, result.longitude);
     }
   }

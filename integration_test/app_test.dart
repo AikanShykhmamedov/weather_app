@@ -76,7 +76,7 @@ void main() {
     await tester.pump(const Duration(seconds: 1));
 
     // Wait for App to fetch CityWeather and add it to the list
-    await Future.delayed(const Duration(seconds: 3));
+    await Future<void>.delayed(const Duration(seconds: 3));
     await tester.pump();
 
     final londonFavoriteCity =

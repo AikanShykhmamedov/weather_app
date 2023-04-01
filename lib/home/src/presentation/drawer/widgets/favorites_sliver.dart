@@ -47,7 +47,7 @@ class FavoritesSliver extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         childCount: max(0, favoriteCities.length * 2 - 1),
         (context, index) {
-          if (index % 2 == 1) {
+          if (index.isOdd) {
             return const SizedBox(height: 8);
           }
 

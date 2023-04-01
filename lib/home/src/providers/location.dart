@@ -29,7 +29,7 @@ class Location extends ChangeNotifier {
       _permission != LocationPermission.deniedForever;
   late LocationPermission _permission;
 
-  late final StreamSubscription _serviceStatusSubscription;
+  late final StreamSubscription<bool> _serviceStatusSubscription;
 
   @override
   void dispose() {

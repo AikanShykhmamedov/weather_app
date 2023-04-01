@@ -17,5 +17,3 @@ abstract class AppColors {
   static const onErrorLight = Color(0xFFFFFFFF);
   static const onErrorDark = Color(0xFFFFFFFF);
 }
-
-

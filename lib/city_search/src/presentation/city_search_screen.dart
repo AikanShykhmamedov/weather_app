@@ -48,7 +48,6 @@ class _CitySearchViewState extends State<_CitySearchView> {
 
     final search = PersistentSearch(
       onTextChanged: context.read<SearchAutocomplete>().onQuery,
-      autofocus: true,
     );
 
     final content = Consumer<SearchAutocomplete>(
