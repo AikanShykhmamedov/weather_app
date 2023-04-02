@@ -93,7 +93,7 @@ void main() {
   });
 }
 
-final londonForecastResponse = '''
+const londonForecastResponse = '''
 {
     "location": {
         "name": "London",
@@ -222,7 +222,7 @@ final londonForecast = Forecast(
         (20 * 60 + 4) * 60 * 1000,
         isUtc: true,
       ),
-      [
+      const [
         19.3,
         19.0,
         18.9,
@@ -250,7 +250,7 @@ final londonForecast = Forecast(
       ],
     ));
 
-final londonCompletionResponse = '''
+const londonCompletionResponse = '''
 [
     {
         "name": "London",
@@ -269,7 +269,7 @@ final londonCompletionResponse = '''
 ]
 ''';
 
-final londonCompletion = [
+const londonCompletion = [
   Location(
     'London',
     'City of London, Greater London',

@@ -64,7 +64,8 @@ void main() {
     expect(repository.city, city);
 
     verify(() => locationApi.getCurrentPosition()).called(1);
-    verify(() => weatherApi.getForecast(city.latitude, city.longitude)).called(1);
+    verify(() => weatherApi.getForecast(city.latitude, city.longitude))
+        .called(1);
     verify(() => storage.save(city)).called(1);
   });
 }

@@ -142,7 +142,6 @@ class CityWeather {
         temperatureBefore, temperatureAfter, sunrise, sunset, wind, pressure);
   }
 
-
   @override
   String toString() {
     return 'CityWeather($name)';

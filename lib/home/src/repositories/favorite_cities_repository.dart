@@ -35,8 +35,14 @@ class FavoriteCitiesRepository {
     temperature: 15,
     temperatureBefore: 13,
     temperatureAfter: 17,
-    sunrise: DateTime.fromMillisecondsSinceEpoch(6 * 60 * 60 * 1000, isUtc: true),
-    sunset: DateTime.fromMillisecondsSinceEpoch(20 * 60 * 60 * 1000, isUtc: true),
+    sunrise: DateTime.fromMillisecondsSinceEpoch(
+      6 * 60 * 60 * 1000,
+      isUtc: true,
+    ),
+    sunset: DateTime.fromMillisecondsSinceEpoch(
+      20 * 60 * 60 * 1000,
+      isUtc: true,
+    ),
     wind: 5,
     pressure: 1030,
   );
