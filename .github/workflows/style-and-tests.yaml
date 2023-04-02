@@ -2,9 +2,9 @@ name: Code style and tests
 
 on:
   push:
-    branches: 
+    branches:
       - main
-    
+
 permissions:
   contents: read
 
@@ -12,23 +12,40 @@ jobs:
   style-and-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
     steps:
       - name: Download the commit to a runner
         uses: actions/checkout@v3
-      
+
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           cache: true
-      
+
       - name: Install dependencies
-        run: flutter pub get
-      
-      - name: Check the commit is formatted well 
+        run: |
+          flutter pub get
+
+          # Get dependencies of packages
+          for package in ${{ github.workspace }}/packages/*; do
+            flutter pub get $package
+          done
+
+      - name: Check the commit is formatted well
         run: dart format --line-length=80 --output=none --set-exit-if-changed .
-      
+
       - name: Check the commit passes Dart Analyzer
         run: flutter analyze --fatal-warnings --fatal-infos
-      
+
       - name: Run tests
-        run: flutter test --no-pub --reporter=github
+        run: |
+          flutter test --no-pub --reporter=github
+
+          # Run tests of packages
+          for package in ${{ github.workspace }}/packages/*; do
+            # Run only if tests are present
+            if find $package/test -name "*_test.dart" 2> /dev/null | grep -q .; then
+              echo "Run tests in $package"
+              (cd $package; flutter test --no-pub --reporter=github)
+            fi
+          done
